@@ -53,7 +53,7 @@ public class DebitAccountServiceImpl implements IDebitAccountService {
                     .retrieve()
                     .bodyToMono(DebitAccount.class);
         }else if(typeofAccount.equals("FIXEDTERM_ACCOUNT")) {
-            return webClientBuilder.baseUrl("http://FIXEDTERMACCOUNT-SERVICE/api/fixedTermAccound")
+            return webClientBuilder.baseUrl("http://FIXEDTERMACCOUNT-SERVICE/api/fixedTermAccount")
                     .build()
                     .put()
                     .uri("/{id}", Collections.singletonMap("id", debitAccountDTO.getId()))
@@ -79,7 +79,7 @@ public class DebitAccountServiceImpl implements IDebitAccountService {
                     .uri("/debitUses/{pan}/{amount}/{password}",params)
                     .accept(MediaType.APPLICATION_JSON)
                     .exchangeToMono(clientResponse -> clientResponse.bodyToMono(DebitAccount.class))
-                    .doOnNext(c -> LOGGER.info("Account Response: Account Amounth={}", c.getAmount()));
+                    .doOnNext(c -> LOGGER.info("Account Response: Account Amounth={}", c.getId()));
         }
 
    }

@@ -91,7 +91,7 @@ public class MovementDebitHandler {
                             .accountUsed(ope.getAccountNumber())
                             .customerIdentityNumber(ope.getCustomerIdentityNumber())
                             .dateOperation(LocalDateTime.now())
-                            .transactionDescription(movementRequest.getDescription()).build());
+                            .transactionDescription(movementRequest.getDescription()).build()).subscribe();
                     return transactionService.saveTransaction(Transaction.builder()
                             .typeOfAccount(ope.getTypeOfAccount())
                             .identityNumber(ope.getAccountNumber())
